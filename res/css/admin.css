@@ -1,0 +1,38 @@
+.dashboard {
+	text-align: center;
+}
+.chart {
+	height: 300px;
+	width: 100%;
+}
+.table-calendar {
+	border-spacing: 3px;
+	border-collapse: separate;
+}
+.table-calendar td {
+	border: 1px solid rgb(221, 221, 221);
+	border-radius: 6px;
+	cursor: pointer;
+	height: 31px;
+}
+.calendar-day {
+	font-weight: bold;
+	font-size: 2em;
+	line-height: 25px;
+	color: rgb(221, 221, 221);
+	float: right;
+}
+.table-calendar td:hover {
+	border: 1px solid #999;
+}
+.table-calendar td:hover .calendar-day {
+	color: #999;
+}
+td.today, td.today:hover {
+	border: 1px solid rgb(0,136,204);
+	cursor: default;
+}
+td.today .calendar-day, td.today:hover .calendar-day {
+	color: rgb(0,136,204);
+}
+

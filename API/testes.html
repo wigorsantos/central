@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+		<title>Testes</title>
+		<link rel="stylesheet" href="../res/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../res/css/prettify.css" />
+		<style type="text/css">
+			pre {
+				margin-top: -20px;
+				padding-top: 15px;
+				margin-bottom: 20px;
+				-webkit-tab-size: 2;
+				   -moz-tab-size: 2;
+				    -ms-tab-size: 2;
+				     -o-tab-size: 2;
+				        tab-size: 2;
+			}
+		</style>
+	</head>
+	<body onload="prettyPrint()">
+		<div class="container">
+			<div class="row">
+				<div class="span4">
+					<form id="input">
+						<legend>Teste da API</legend>
+						<div class="control-group">
+							<label class="control-label" for="appid">AppID</label>
+							<div class="controls">
+								<input class="span4" type="text" name="appid" id="appid" placeholder="appid">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="token">Token</label>
+							<div class="controls">
+								<input class="span4" type="text" name="token" id="token" placeholder="token">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="url">URL</label>
+							<div class="controls">
+								<span class="help-block">http://[...]/API/</span>
+								<input class="span4" type="text" name="url" id="url" placeholder="url">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="params">Parâmetros (JSON)</label>
+							<div class="controls">
+								<textarea class="span4" id="params" placeholder="params">{}</textarea>
+							</div>
+						</div>
+						<div class="form-actions">
+							<button class="btn btn-primary" type="submit" data-loading-text="Executando...">Executar</button>
+						</div>
+					</form>
+				</div>
+				<div class="span8">
+					<legend>Resposta</legend>
+					<pre class="prettyprint" id="output"></pre>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../res/js/jquery.js"></script>
+		<script type="text/javascript" src="../res/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../res/js/prettify.js"></script>
+		<script type="text/javascript">
+		$("#input").submit(function(e){
+			e.preventDefault();
+			var url = $("#url").val();
+			var appid = $("#appid").val();
+			var token = $("#token").val();
+			var params = $("#params").val();
+			var data = {
+				appid: appid,
+				token: token,
+			}
+			$("button[type='submit']").button('loading');
+			$.getJSON(url,data,function(d){
+				$("#output").text(JSON.stringify(d,null,'\t'));
+				$("button[type='submit']").button('reset');
+				prettyPrint();
+			});
+			
+		});
+		</script>
+	</body>
+</html>

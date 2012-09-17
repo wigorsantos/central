@@ -1,0 +1,364 @@
+body {
+	padding-top:60px;
+	padding-bottom:40px;
+	background: #FFF;
+}
+
+.brand {
+	height: 20px;
+	padding-left: 40px !important;
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+.sidebar-nav { width: 220px; }
+/*.sidebar-nav.affix-top {
+	margin-right: -14px;
+}
+.sidebar-nav.affix, .sidebar-nav.affix-bottom {
+	display: block;
+	float: left;
+	min-height: 30px;
+	-moz-box-sizing: border-box;
+	width: 20%;
+}*/
+.username {
+	padding: 3px 20px;
+	display: block;
+	clear: both;
+	white-space: nowrap;
+	font-weight: bold;
+	cursor: default;
+	color: #333;
+}
+.username small {
+	display: block;
+	font-size: 11px;
+	color: #999;
+	text-align: right;
+	font-weight: normal;
+}
+.col1-bordered {
+	border-right: solid 1px #EEE;
+	padding-right: 20px;
+}
+.col2-bordered {
+	border-left: solid 1px #EEE;
+	padding-left: 20px;
+}
+.clear { clear: both; }
+#flash {
+	position: fixed;
+	top: 50px;
+	right: 10px;
+	z-index: 12000;
+}
+.smiley {
+	vertical-align: middle;
+	margin: 0 5px 0px 5px;
+}
+
+.cpanel-box {
+	background-color: #FFFFFF;
+	box-shadow: 2px 2px 4px #ACACAC;
+	margin: 10px 3px 10px 3px;
+}
+
+.table-datasheet {
+	width: 100%;
+	padding: 0;
+}
+.table-datasheet td {
+	padding: 3px;
+	margin: 0px;
+	border: none;
+}
+.table-datasheet input, .table-datasheet select {
+	width: 100%;
+	border: solid 1px #CCC;
+	margin: 0px;
+	border-radius: 0px;
+	height: 22px;
+	padding: 0px;
+	font-size: 11px;
+	line-height: 16px;
+}
+.table-datasheet th {
+	text-align: left;
+}
+.table-datasheet th small {
+	display: block;
+	font-size: 11px;
+	font-weight: normal;
+}
+.table-datasheet .opt-col {
+	width: 90px;
+}
+
+
+/* Status */
+.status_rascunho {color:#AAAAAA;}
+.status_pendente {color:#333333;}
+.status_aprovada {color:#3333FF;}
+.status_recusada {color:#FF3333; text-decoration: line-through;}
+.status_executada {color:#9E9EFF;}
+.status_cancelada {color: #CCCCCC; text-decoration: line-through;}
+.status_analise, .status_cotando {font-style: italic;}
+
+/**
+ * ICONES
+ */
+ .icon {
+ 	display: inline-block;
+ 	width: 16px;
+ 	height: 16px;
+ 	margin: 0 3px 0 0;
+ 	vertical-align: middle;
+ }
+ .icon-aprovar {background: url(../img/aprovar.png) no-repeat left center;}
+ .icon-cotar {background: url(../img/cotar.png) no-repeat left center;}
+ .icon-editar {background: url(../img/editar.png) no-repeat left center;}
+ .icon-enviar {background: url(../img/enviar.png) no-repeat left center;}
+ .icon-encaminhar {background: url(../img/encaminhar.png) no-repeat left center;}
+ .icon-excluir {background: url(../img/excluir.png) no-repeat left center;}
+ .icon-imprimir {background: url(../img/imprimir.png) no-repeat left center;}
+ .icon-observar {background: url(../img/observar.png) no-repeat left center;}
+ .icon-recusar {background: url(../img/recusar.png) no-repeat left center;}
+ .icon-retornar {background: url(../img/retornar.png) no-repeat left center;}
+ .icon-anexo {background: url(../img/anexo.png) no-repeat left center;}
+ .icon-aprovada {background: url(../img/aprovada.png) no-repeat left center;}
+ .icon-cotando {background: url(../img/cotando.png) no-repeat left center;}
+ .icon-analise {background: url(../img/analise.png) no-repeat left center;}
+ .icon-encaminhado {background: url(../img/encaminhado.png) no-repeat left center;}
+ .icon-pendente {background: url(../img/pendente.png) no-repeat left center;}
+ .icon-rascunho {background: url(../img/rascunho.png) no-repeat left center;}
+ .icon-recusada {background: url(../img/recusada.png) no-repeat left center;}
+ .icon-retornada {background: url(../img/retornada.png) no-repeat left center;}
+ .icon-executada {background: url(../img/executada.png) no-repeat left center;}
+ .icon-cancelada {background: url(../img/cancelada.png) no-repeat left center;}
+
+/**
+ * DOCUMENTO
+ */
+div.doc_rascunho {
+	background: url(../img/bg-rascunho.png) top center;
+}
+div.doc_retornada {
+	background: url(../img/doc-retornada.png) top right no-repeat;
+}
+div.doc_pendente {
+	background: url(../img/doc-pendente.png) top right no-repeat;
+}
+div.doc_cotando {
+	background: url(../img/doc-cotando.png) top right no-repeat;
+}
+div.doc_analise {
+	background: url(../img/doc-analise.png) top right no-repeat;
+}
+div.doc_aprovada {
+	background: url(../img/doc-aprovada.png) top right no-repeat;
+}
+div.doc_recusada {
+	background: url(../img/doc-recusada.png) top right no-repeat;
+}
+div.doc_executada {
+	background: url(../img/doc-executada.png) top right no-repeat;
+}
+div.doc_cancelada {
+	background: url(../img/doc-cancelada.png) top right no-repeat;
+}
+div.document {
+	background-color: #FFFFFF;
+	color: #000000;
+	text-shadow: none;
+	box-shadow: 2px 2px 4px #ACACAC;
+	border: solid 1px #EEEEEE;
+	padding: 10px;
+	margin: 20px;
+	margin-top: 10px;
+}
+div.document-title {
+	text-align: center;
+	/*text-transform: uppercase;*/
+	font-size: 22px;
+}
+div.document hr {
+	border: none;
+	border-bottom: solid 1px #000000;
+	margin-bottom: 10px;
+}
+div.document td {
+	border:none;
+	background: none !important;
+}
+div.document table.itens {
+	margin-top: 10px;
+}
+div.document table.itens td,
+div.document table.itens th {
+	text-align: left;
+	padding: 4px;
+	/*border: solid 0.5px #000000;*/
+}
+div.document table.itens tbody tr:nth-child(odd) td {
+	background: none;
+}
+div.document table.itens  tbody tr:nth-child(even) td {
+	background: #F3F3F3 !important;
+}
+div.document table.itens thead {
+	background: #E0E0E0;
+}
+div.document table.itens tr:last-child td {
+	border: none;
+}
+div.document div.observations div.obs {
+	font-size: 11px;
+	background: none !important;
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
+
+div.document table.control td {
+	vertical-align: top;
+	text-align: center;
+}
+div.cargo {
+	font-size: 10px;
+}
+div.document table.control .oid {
+	text-align: right;
+	font-size: 9px;
+}
+div.document table.control .oinc {
+	text-align: right;
+	font-size: 22px;
+}
+
+/**
+ * ERROR PAGE
+ */
+body, div.navbar-fixed-top, div#content, footer {
+	-webkit-transition: 1s ease;
+	   -moz-transition: 1s ease;
+	    -ms-transition: 1s ease;
+	     -o-transition: 1s ease;
+	        transition: 1s ease;
+}
+body.error div.navbar-fixed-top{
+	-webkit-transform: rotate(2deg) translate(0px, 30px);
+	   -moz-transform: rotate(2deg) translate(0px, 30px);
+	    -ms-transform: rotate(2deg) translate(0px, 30px);
+	     -o-transform: rotate(2deg) translate(0px, 30px);
+	        transform: rotate(2deg) translate(0px, 30px);
+
+}
+body.error div#content{
+	-webkit-transform: rotate(-2deg) translate(10px, 20px);
+	   -moz-transform: rotate(-2deg) translate(10px, 20px);
+	    -ms-transform: rotate(-2deg) translate(10px, 20px);
+	     -o-transform: rotate(-2deg) translate(10px, 20px);
+	        transform: rotate(-2deg) translate(10px, 20px);
+
+}
+body.error footer{
+	-webkit-transform: rotate(5deg) translate(100px, 60px);
+	   -moz-transform: rotate(5deg) translate(100px, 60px);
+	    -ms-transform: rotate(5deg) translate(100px, 60px);
+	     -o-transform: rotate(5deg) translate(100px, 60px);
+	        transform: rotate(5deg) translate(100px, 60px);
+
+}
+.feedback-legend {
+	display: inline-block;
+	font-size: 11px;
+	line-height: 14px;
+	border-left: solid 14px;
+	color: #AAAAAA;
+	padding-left: 5px;
+	margin: 5px;
+}
+blockquote.error, .feedback-legend-error {
+	border-left-color: #EE4329;
+}
+blockquote.suggestion, .feedback-legend-suggestion {
+	border-left-color: #9A8AEE;
+}
+blockquote.complaint, .feedback-legend-complaint {
+	border-left-color: #EE8429;
+}
+blockquote.compliment, .feedback-legend-compliment {
+	border-left-color: #9AEEEE;
+}
+blockquote.other, .feedback-legend-other {
+	border-left-color: #EEEEEE;
+}
+
+/**
+ * NOVIDADES
+ */
+ .marketing {
+ 	/*background: #333 url("../img/bg.png");
+ 	color: #FFF;*/
+ 	text-align: center;
+ 	padding: 10px;
+ 	text-shadow: 0px 1px 2px #EEE;
+
+ 	/*border-radius: 10px;
+ 	box-shadow: 0px 1px 2px #666, inset 0px -1px 3px #000;*/
+ }
+ .marketing .feature {
+ 	border: solid 1px #CCC;
+ 	border-radius: 6px;
+ 	box-shadow: 2px 2px 6px #666;
+ }
+ .marketing .row { margin-left:0px; margin-bottom: 20px; }
+ .marketing h1 { font-size: 3em; }
+ .marketing h2 { margin-bottom: 20px; margin-top: 30px; }
+ .marketing h2 small { display: block; }
+ .marketing .text { text-align: left; }
+ .marketing .text-right { text-align: right; }
+
+/**
+ * RESPONSIVE
+ */
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+	.col1-bordered {
+		border-right: none;
+		padding-right: 0px;
+	}
+	.col2-bordered {
+		border-left: none;
+		padding-left: 0px;
+	}
+	#flash {
+		display: block;
+		position: relative;
+		margin: 10px;
+		top:0px;
+		right:0px;
+	}
+	.table-datasheet .opt-col {
+		width: 28px;
+	}
+	 .marketing .text, .marketing .text-right { text-align: center;margin-top: 10px; }
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+	
+}
+
+ 
+/* Large desktop */
+@media (min-width: 1200px) {
+
+}
+

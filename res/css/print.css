@@ -1,0 +1,115 @@
+body, td, input, select, textarea, output, form {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	text-shadow: 0 1px 1px #FFFFFF;
+}
+th { text-align: left; }
+.align-to-center {text-align: center;}
+div.document {
+	background-color: #FFFFFF;
+	color: #000000;
+	text-shadow: none;
+	padding: 10px;
+}
+div.document-status {
+	float:right;
+	
+}
+div.document-status img {
+	position: absolute;
+	right: 10px;
+	top: 0px;
+}
+div.document-title {
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 22px;
+}
+div.document hr {
+	border: none;
+	border-bottom: solid 1px #000000;
+	margin-bottom: 10px;
+}
+div.document td {
+	/*border:solid;*/
+	background: none !important;
+}
+div.document table.itens {
+	margin-top: 10px;
+	border-left: solid 1px #000000;
+	border-top: solid 1px #000000;
+}
+div.document table.itens td,
+div.document table.itens th {
+	border-right: solid 1px #000000;
+	border-bottom: solid 1px #000000;
+}
+div.document table.itens tr:nth-child(even) t {
+	background: none;
+}
+div.document table.itens tr:nth-child(odd) td {
+	background: #F3F3F3 !important;
+}
+div.document table.itens tr:first-child th {
+	background: #E0E0E0;
+}
+div.document div.observations div.obs {
+	font-size: 11px;
+	background: none !important;
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
+
+div.document table.control td {
+	vertical-align: top;
+	text-align: center;
+}
+div.cargo {
+	font-size: 10px;
+}
+
+
+
+div.document table.control .oid {
+	text-align: right;
+	font-size: 9px;
+}
+div.document table.control .oinc {
+	text-align: right;
+	font-size: 22px;
+}
+
+
+
+
+div.no-print {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	padding: 5px;
+	border-radius: 5px;
+	background: #333333;
+	box-shadow: 1px 1px 2px #333333;
+}
+div.no-print strong, div.no-print li, div.no-print a {
+	color: #FFFFFF;
+	text-shadow: 0 1px 1px #000000;
+}
+kbd {
+	padding: 1px;
+	font-size: 11px;
+	background: #EFEFEF;
+	color: #000000;
+	border-top: solid 1px #E3E3E3;
+	border-left: solid 1px #E9E9E9;
+	border-bottom: solid 2px #3E3E3E;
+	border-right: solid 2px #9E9E9E;
+	border-radius: 2px;
+}
+
+@media print {
+	div.no-print {
+		display: none;
+	}
+}

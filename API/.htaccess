@@ -1,0 +1,39 @@
+Options +FollowSymLinks
+#AllowOverride All
+
+ErrorDocument 404 /404.php
+ErrorDocument 500 /500.php
+
+RewriteEngine on
+RewriteBase   /API
+
+#RewriteCond %{REQUEST_URI} !^/index\.php
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+
+# Autorização de aplicativo
+RewriteRule ^auth(/{0,1})$ auth.php?%{QUERY_STRING}
+
+# Todas as solicitações do usuário
+RewriteRule ^solicitacao.json$ api.php?a=SolicitacaoAPI.all&%{QUERY_STRING}
+
+# Nova solicitação
+RewriteRule ^solicitacao/novo.json$ api.php?a=SolicitacaoAPI.novo&%{QUERY_STRING}
+
+# Todas pendencias do usuário
+RewriteRule ^solicitacao/pendencias.json$ api.php?a=SolicitacaoAPI.pendencias&%{QUERY_STRING}
+
+# Todas participações do usuário
+RewriteRule ^solicitacao/participacoes.json$ api.php?a=SolicitacaoAPI.participacoes&%{QUERY_STRING}
+
+# Todas as solicitações do usuário com determinado status
+RewriteRule ^solicitacao/(rascunhos|pendentes|aprovadas|recusadas|retornadas|cotando|analisando|executadas|canceladas).json$ api.php?a=SolicitacaoAPI.getByStatus&status=$1&%{QUERY_STRING}
+
+# Solicitação pelo ID
+RewriteRule ^solicitacao/([0-9a-fA-F]{24}).json$ api.php?a=SolicitacaoAPI.get&id=$1&%{QUERY_STRING}
+
+# Ações da solicitação
+RewriteRule ^solicitacao/([0-9a-fA-F]{24})/(send|approve|devolve|update|observe|quote|send_to_analysis|analyze|refuse|run|refer|delete|cancel).json$ api.php?a=SolicitacaoAPI.$2&id=$1%{QUERY_STRING}
+
+# Dados auxiliares
+RewriteRule ^util/(tipos|especialistas|centros|perfil).json$ api.php?a=UtilAPI.$1&%{QUERY_STRING}

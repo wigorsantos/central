@@ -1,0 +1,108 @@
+Options +FollowSymLinks
+#AllowOverride All
+
+ErrorDocument 404 /templates/404.php
+ErrorDocument 500 /templates/500.php
+
+RewriteEngine on
+RewriteBase /
+
+#RewriteCond %{REQUEST_URI} !^/index\.php
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+
+# Home
+RewriteRule ^(/{0,1})$ 																			index.php?request_method_name=home&%{QUERY_STRING}
+
+# Logout
+RewriteRule ^logout(/{0,1})$ 																	index.php?request_method_name=logout&%{QUERY_STRING}
+
+# Login
+RewriteRule ^login(/{0,1})$ 																	index.php?request_method_name=login&%{QUERY_STRING}
+
+# Todas as minhas pendências (Aprovação, Análise, Cotação)
+RewriteRule ^pendencias(/{0,1})$ 																index.php?request_method_name=pendencias&%{QUERY_STRING}
+
+# Todas as minhas pendências (Aprovação, Análise, Cotação)
+RewriteRule ^participacoes(/{0,1})$ 															index.php?request_method_name=participacoes&%{QUERY_STRING}
+
+# Nova solicitação
+RewriteRule ^nova(/{0,1})$ 																		index.php?request_method_name=nova&%{QUERY_STRING}
+
+# Redirecionar do número incremental de controle para o ObjectId
+RewriteRule ^([0-9]{1,6})(/{0,1})$ 																index.php?request_method_name=hub&oinc=$1
+
+# Redirecionar do número incremental de controle para o ObjectId
+RewriteRule ^([0-9]{1,6})/(editar|enviar|cotar|analisar|decidir|excluir|imprimir)(/{0,1})$ 		index.php?request_method_name=hub&oinc=$1&act=$2
+
+# Solicitação pelo ObjectId do MongoDB
+RewriteRule ^([0-9a-fA-F]{24})(/{0,1})$ 														index.php?request_method_name=solicitacao&oid=$1&%{QUERY_STRING}
+
+# Edição da solicitação
+RewriteRule ^([0-9a-fA-F]{24})/editar(/{0,1})$ 													index.php?request_method_name=editar&oid=$1&%{QUERY_STRING}
+
+# Enviar a solicitação para aprovação
+RewriteRule ^([0-9a-fA-F]{24})/enviar(/{0,1})$ 													index.php?request_method_name=enviar&oid=$1&%{QUERY_STRING}
+
+# Fazer a cotação da solicitação de compra
+RewriteRule ^([0-9a-fA-F]{24})/cotar(/{0,1})$ 													index.php?request_method_name=cotar&oid=$1&%{QUERY_STRING}
+
+# Fazer a análise da solicitação
+RewriteRule ^([0-9a-fA-F]{24})/analisar(/{0,1})$ 												index.php?request_method_name=analisar&oid=$1&%{QUERY_STRING}
+
+# Decidir (aprovar, reprovar etc.) uma solicitação
+RewriteRule ^([0-9a-fA-F]{24})/decidir(/{0,1})$ 												index.php?request_method_name=decidir&oid=$1&%{QUERY_STRING}
+
+# Encaminhar uma solicitação
+RewriteRule ^([0-9a-fA-F]{24})/encaminhar(/{0,1})$ 												index.php?request_method_name=encaminhar&oid=$1&%{QUERY_STRING}
+
+# Excluir uma solicitação
+RewriteRule ^([0-9a-fA-F]{24})/excluir(/{0,1})$ 												index.php?request_method_name=excluir&oid=$1&%{QUERY_STRING}
+
+# Imprimir uma solicitação
+RewriteRule ^([0-9a-fA-F]{24})/imprimir(/{0,1})$ 												index.php?request_method_name=imprimir&oid=$1&%{QUERY_STRING}
+
+# Confirmar a execução de uma solicitação
+RewriteRule ^([0-9a-fA-F]{24})/executar(/{0,1})$ 												index.php?request_method_name=executar&oid=$1&%{QUERY_STRING}
+
+# Cancelar uma solicitação
+RewriteRule ^([0-9a-fA-F]{24})/cancelar(/{0,1})$ 												index.php?request_method_name=cancelar&oid=$1&%{QUERY_STRING}
+
+# Gerar o QRCode de uma solicitação
+RewriteRule ^([0-9a-fA-F]{24})\.qr$ 															index.php?request_method_name=qr&oid=$1&%{QUERY_STRING}
+
+# Página de boas vindas e atualização das informações do AD
+RewriteRule ^bemvindo(/{0,1})$ 																	index.php?request_method_name=bemvindo&%{QUERY_STRING}
+
+# Perfil do usuário e atualização das informações do AD
+RewriteRule ^perfil(/{0,1})$ 																	index.php?request_method_name=perfil&%{QUERY_STRING}
+
+# Página de feedback
+RewriteRule ^feedback(/{0,1})$ 																	index.php?request_method_name=feedback&%{QUERY_STRING}
+
+# Download de arquivos anexos a solicitação
+RewriteRule ^d/([0-9a-fA-F]{24})(/{0,1})$ 														index.php?request_method_name=download&fid=$1&%{QUERY_STRING}
+
+# Novidades da central
+RewriteRule ^novidades(/{0,1})$ 																index.php?request_method_name=novidades&fid=$1&%{QUERY_STRING}
+
+# Minhas solicitações
+RewriteRule ^todas(/{0,1})$ 																	index.php?request_method_name=solicitacoes&status=all&%{QUERY_STRING}
+RewriteRule ^rascunhos(/{0,1})$ 																index.php?request_method_name=solicitacoes&status=rascunhos&%{QUERY_STRING}
+RewriteRule ^pendentes(/{0,1})$ 																index.php?request_method_name=solicitacoes&status=pendentes&%{QUERY_STRING}
+RewriteRule ^cotando(/{0,1})$ 																	index.php?request_method_name=solicitacoes&status=cotando&%{QUERY_STRING}
+RewriteRule ^analisando(/{0,1})$ 																index.php?request_method_name=solicitacoes&status=analisando&%{QUERY_STRING}
+RewriteRule ^retornadas(/{0,1})$ 																index.php?request_method_name=solicitacoes&status=retornadas&%{QUERY_STRING}
+RewriteRule ^executadas(/{0,1})$ 																index.php?request_method_name=solicitacoes&status=executadas&%{QUERY_STRING}
+RewriteRule ^aprovadas(/{0,1})$ 																index.php?request_method_name=solicitacoes&status=aprovadas&%{QUERY_STRING}
+RewriteRule ^recusadas(/{0,1})$ 																index.php?request_method_name=solicitacoes&status=recusadas&%{QUERY_STRING}
+RewriteRule ^canceladas(/{0,1})$ 																index.php?request_method_name=solicitacoes&status=canceladas&%{QUERY_STRING}
+
+
+#### ADMIN ####
+# Dashboard do Admin
+RewriteRule ^admin(/{0,1})$																		index.php?request_method_name=admin&admin_action=dashboard&%{QUERY_STRING}
+# Administração básica
+RewriteRule ^admin/(tipos|especialistas|centros|relatorios|feedbacks|logs|all)(/{0,1})$	index.php?request_method_name=admin&admin_action=$1&%{QUERY_STRING}
+# Administração avançada
+RewriteRule ^admin/(org|env|smtp|ldap|mongo|regras|backup|status|editar|apps)(/{0,1})$				index.php?request_method_name=admin&admin_action=$1&%{QUERY_STRING}
