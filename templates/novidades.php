@@ -13,14 +13,14 @@
 		</div>
 		
 		<div class="row">
-			<h2>Acessível de qualquer lugar.<small>No escritório, na rua e até no Japão.</small></h2>
+			<h2>Acessível de qualquer lugar.<small>No escritório, na rua e até em casa.</small></h2>
 			<div class="span6 offset1"><img class="feature" src="<?= SITE_BASE ?>res/img/mkt/Responsive.png"></div>
 			<div class="span3 text">
 				<p>A compatibilidade com dispositivos móveis foi otimizada, acesse <a href="http://<?= SITE_BASE ?>"><?= SITE_BASE ?></a> do seu computador, tablet ou smartphone.</p>
-				<p>Não é preciso estar dentro do clube para fazer as suas solicitações ou aprovações, o mesmo endereço pode ser usado em qualquer lugar do mundo.</p>
+				<p>Não é preciso estar no escritório para fazer as suas solicitações ou aprovações, o mesmo endereço pode ser usado em qualquer lugar do mundo.</p>
 				<p>&nbsp;</p>
 				<p>
-					<strong>Acesse a Central de Solicitações do seu smartphone fotografando essa imagem:</strong>
+					<strong>Acesse a Central de Solicitações pelo seu smartphone fotografando essa imagem:</strong>
 					<div style="text-align:center"><img src="<?= SITE_BASE ?>res/img/mkt/qr.png"></div>
 				</p>
 			</div>
