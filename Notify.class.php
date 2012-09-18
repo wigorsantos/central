@@ -59,12 +59,14 @@ class Notify {
 		//echo '<pre>';
 		# uma mensagem para cada destinatário
 		foreach ($to as $target) {
-			# 4. Qual o conteúdo da mensagem?
-			$body = $this->getBody($action, $from, $target, $subject, $extra_params);
-			# 5. Envie um e-mail
-			EMAIL::send($from, $target . ADLDAP_ACCOUNT_SUFFIX, $subject, $body, false);
-			# TO-DO: 6. Notifica via API
-			//print_r(array($target, $body));
+			if(!empty($target)){
+				# 4. Qual o conteúdo da mensagem?
+				$body = $this->getBody($action, $from, $target, $subject, $extra_params);
+				# 5. Envie um e-mail
+				EMAIL::send($from, $target . ADLDAP_ACCOUNT_SUFFIX, $subject, $body, false);
+				# TO-DO: 6. Notifica via API
+				//print_r(array($target, $body));
+			}
 		}
 		//print_r(array($action,$from, $to, $subject, $extra_params));
 		//echo '</pre>';
