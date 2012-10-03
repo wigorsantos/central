@@ -1,0 +1,1 @@
+{options : { "create" : "feedback" }, indexes:[{ "name" : "_id_", "ns" : "solicitacoes.feedback", "key" : { "_id" : 1 } }]}

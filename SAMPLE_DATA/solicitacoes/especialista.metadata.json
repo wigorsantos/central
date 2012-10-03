@@ -1,0 +1,1 @@
+{options : { "create" : "especialista" }, indexes:[{ "name" : "_id_", "ns" : "solicitacoes.especialista", "key" : { "_id" : 1 } }]}
