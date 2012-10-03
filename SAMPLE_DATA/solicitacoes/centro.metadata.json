@@ -1,1 +1,0 @@
-{options : { "create" : "centro" }, indexes:[{ "name" : "_id_", "ns" : "solicitacoes.centro", "key" : { "_id" : 1 } }]}
