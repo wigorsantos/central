@@ -2,7 +2,7 @@
 <html lang="pt">
 	<head>
 		<meta charset="utf-8" />
-		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 		<meta name="author" content="Luiz Fernando da Silva <lfsilva@sccorinthians.com.br>" />
 		<meta name="copyright" content="Sport Club Corinthians Paulista" />
