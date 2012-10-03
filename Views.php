@@ -496,7 +496,7 @@ class Views{
 			} else {
 				$centro = DB::$centro->findOne(array('apelido' => (int)$_POST['centro']),array('_id'));
 				if(!$centro){
-					$_SESSION['flash'] = "O centro de custos informado selecionado não é válido.";
+					$_SESSION['flash'] = "O centro de custos informado não é válido.";
 					header("Location: " . SITE_BASE ."nova");
 				}else{
 					$s = Solicitacao::create($_SESSION['user'],$_POST['tipo'],$_POST['descricao'],$_POST['prazo'],(string)$centro['_id']);
@@ -629,51 +629,28 @@ class Views{
 		}else{
 			if(!isset($_POST) ||
 				(!isset($_POST['descricao']) && !empty($_POST['descricao'])) || 
+				(!isset($_POST['centro']) && !empty($_POST['centro'])) || 
 				(!isset($_POST['item']) && !empty($_POST['item']))){
 				$_SESSION['flash'] = "Preencha as informações básicas da solicitação e adicione pelo menos 1 detalhe.";
-				header("Location: " . SITE_BASE ."nova");
+				header("Location: " . SITE_BASE  . $s->id . "/editar");
 			}else{
 				# Salvar as alterações na solicitação
-				$descricao = $_POST['descricao'];
-				$prazo = $_POST['prazo'];
+				$centro = DB::$centro->findOne(array('apelido' => (int)$_POST['centro']),array('_id'));
+				if(!$centro){
+					$_SESSION['flash'] = "O centro de custos informado não é válido.";
+					header("Location: " . SITE_BASE  . $s->id . "/editar");
+				}else{
+					$descricao = $_POST['descricao'];
+					$prazo = $_POST['prazo'];
 
-				$s->descricao = $descricao;
-				$s->prazo = $prazo;
-				$s->save();
+					$s->centro = MongoDBRef::create("centro", $centro['_id']);
+					$s->descricao = $descricao;
+					$s->prazo = $prazo;
+					$s->save();
 
-				# Salvar os itens da solicitação
-				$items = array();
-				foreach($_POST['item'] as $item) {
-					$item_empty = true;
-					foreach($item as $col => $v){
-						if(!is_null($v) && (is_numeric($v) || !empty($v))){
-							$item_empty = false;
-						}
-					}
-					if(!$item_empty){
-						$items[] = $item;
-					}
-				}
-				$c_items = count($items);
-				foreach ($items as $item) {
-					if(isset($item['id'])){
-						if(isset($item['remove'])){
-							if($c_items > 1){
-								DB::$item->remove(array('_id' => new MongoId($item['id'])));
-								$c_items--;
-							}else{
-								$_SESSION['flash'] = 'É necessário pelo menos um detalhe na solicitação';
-							}
-						}else{
-							$o_item = DB::$item->findOne(array('_id' => new MongoId($item['id'])));
-							foreach ($item as $column => $value) {
-								if($column != '_id'){
-									$o_item[$column] = $value;
-								}
-							}
-							DB::$item->save($o_item);
-						}
-					}else{
+					# Salvar os itens da solicitação
+					$items = array();
+					foreach($_POST['item'] as $item) {
 						$item_empty = true;
 						foreach($item as $col => $v){
 							if(!is_null($v) && (is_numeric($v) || !empty($v))){
@@ -681,24 +658,55 @@ class Views{
 							}
 						}
 						if(!$item_empty){
-							$s->saveDetail($item);
+							$items[] = $item;
 						}
 					}
-				}
-				if($c_items == 0){
-					$_SESSION['flash'] = 'É necessário pelo menos um detalhe na solicitação';
-				}
-				if(!isset($_SESSION['flash'])){
-					$_SESSION['flash'] = "Alterações salvas!";
-				}
-				# Avisar sobre a edição
-				if($s->status[0] == 4){
-					if(!isset($_SESSION['flash'])){
-						$_SESSION['flash'] = "Revisão salva!";
+					$c_items = count($items);
+					foreach ($items as $item) {
+						if(isset($item['id'])){
+							if(isset($item['remove'])){
+								if($c_items > 1){
+									DB::$item->remove(array('_id' => new MongoId($item['id'])));
+									$c_items--;
+								}else{
+									$_SESSION['flash'] = 'É necessário pelo menos um detalhe na solicitação';
+								}
+							}else{
+								$o_item = DB::$item->findOne(array('_id' => new MongoId($item['id'])));
+								foreach ($item as $column => $value) {
+									if($column != '_id'){
+										$o_item[$column] = $value;
+									}
+								}
+								DB::$item->save($o_item);
+							}
+						}else{
+							$item_empty = true;
+							foreach($item as $col => $v){
+								if(!is_null($v) && (is_numeric($v) || !empty($v))){
+									$item_empty = false;
+								}
+							}
+							if(!$item_empty){
+								$s->saveDetail($item);
+							}
+						}
 					}
-					$s->update();
+					if($c_items == 0){
+						$_SESSION['flash'] = 'É necessário pelo menos um detalhe na solicitação';
+					}
+					if(!isset($_SESSION['flash'])){
+						$_SESSION['flash'] = "Alterações salvas!";
+					}
+					# Avisar sobre a edição
+					if($s->status[0] == 4){
+						if(!isset($_SESSION['flash'])){
+							$_SESSION['flash'] = "Revisão salva!";
+						}
+						$s->update();
+					}
+					header('Location: ' . SITE_BASE . $s->id);
 				}
-				header('Location: ' . SITE_BASE . $s->id);
 			}
 		}
 	}

@@ -17,7 +17,7 @@
 		var template = "<tr>";
 	<?php
 	foreach ($t['detalhe'] as $d) {
-		echo 'template += \'<td><input name="item[__c__][' . $d['nome_unico'] . ']" type="' . ($d['tipo'] != 'money' ? $d['tipo'] : 'number') . '" data-type="' . $d['tipo'] . '" title="' . $d['dica'] . '" /></td>\';';
+		echo 'template += \'<td><input name="item[__c__][' . $d['nome_unico'] . ']" type="' . ($d['tipo'] != 'money' ? $d['tipo'] : 'text') . '" data-type="' . $d['tipo'] . '" title="' . $d['dica'] . '" /></td>\';';
 	}
 	?>
 		template += "<td><a class='btn btn-danger btn-mini' id='remove-" + rCount + "' href='#' onclick='removeRow(this.id);return false;'><i class='icon-remove icon-white'></i> <span class='hidden-phone'>Remover</span></a></td></tr>";
